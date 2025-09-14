@@ -41,8 +41,6 @@ class TestUtilityFunctions:
     def test_text_to_number_invalid(self):
         """Test text to number with invalid input."""
         with pytest.raises(ValueError):
-            text_to_number('eleven')
-        with pytest.raises(ValueError):
             text_to_number('invalid')
         with pytest.raises(ValueError):
             text_to_number('')
@@ -352,7 +350,7 @@ class TestErrorHandling:
     
     def test_invalid_text_input(self, client):
         """Test invalid text input."""
-        response = self.make_conversion_request(client, 'eleven', 'text', 'decimal')
+        response = self.make_conversion_request(client, 'invalid', 'text', 'decimal')
         assert response.status_code == 200
         data = json.loads(response.data)
         assert data['result'] is None

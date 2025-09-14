@@ -15,16 +15,18 @@ def text_to_number(text):
     if text in ['zero', 'nil']:
         return 0
     
-    # Dictionary for special number words
-    number_words = {
-        'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
-        'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10
-    }
-    
-    if text in number_words:
-        return number_words[text]
-    
-    raise ValueError("Unable to convert text to number")
+    # Use text2digits to convert text to number
+    try:
+        t2d = text2digits.Text2Digits()
+        converted = t2d.convert(text)
+        numbers = re.findall(r'\d+', converted)
+
+        if numbers:
+            return int(numbers[0])
+        else:
+            raise ValueError("Unable to convert text to number")
+    except:
+        raise ValueError("Unable to convert text to number")
 
 def number_to_text(number):
     """Convert integer to English text"""
