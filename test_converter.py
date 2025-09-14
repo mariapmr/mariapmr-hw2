@@ -24,6 +24,7 @@ class TestUtilityFunctions:
         assert text_to_number('ten') == 10
         assert text_to_number('zero') == 0
         assert text_to_number('nil') == 0
+        assert text_to_number('forty two') == 42
     
     def test_text_to_number_case_insensitive(self):
         """Test text to number with different cases."""
